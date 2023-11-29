@@ -2,7 +2,7 @@ import User from "../../models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-export const postRegister = async (req, res) => {
+export const postLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
 
