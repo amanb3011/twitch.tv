@@ -5,7 +5,7 @@ import { useChannelDetails } from "../../../shared/hooks/useChannelDetails";
 import { useParams } from "react-router-dom";
 import { LoadingSpinner } from "../../../shared/components";
 
-export const ChannelView = () => {
+export const ChannelView = ({ getChannels }) => {
   const { channelDetails, isFetching, getChannelDetails } = useChannelDetails();
 
   const { id } = useParams();
@@ -28,6 +28,7 @@ export const ChannelView = () => {
           title={channelDetails.title}
           description={channelDetails.description}
           username={channelDetails.username}
+          getChannels={getChannels}
         />
       </div>
       <Chat />

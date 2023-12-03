@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   getChannels as getChannelsRequest,
   getFollowedChannels,
@@ -40,10 +40,6 @@ export const useChannels = () => {
       ),
     });
   };
-
-  useEffect(() => {
-    console.log(channels);
-  }, [channels]);
 
   return {
     getChannels,
