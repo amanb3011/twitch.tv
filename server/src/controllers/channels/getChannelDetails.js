@@ -1,7 +1,7 @@
 import User from "../../models/User.js";
 import Channel from "../../models/Channel.js";
 
-export const getChannelDetails = async () => {
+export const getChannelDetails = async (req, res) => {
   try {
     const { channelId } = req.params;
 
@@ -27,7 +27,7 @@ export const getChannelDetails = async () => {
     });
   } catch (error) {
     console.log(error);
-    return res.status(500).send("something went wrong");
+    return res.status(500).send("something went wrong check your url");
   }
 };
 

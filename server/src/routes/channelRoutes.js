@@ -19,7 +19,7 @@ const validator = ExpressValidation.createValidator({});
 
 router.get("/followed", verifyToken, getFollowedChannels);
 
-router.get(
+router.post(
   "/follow",
   verifyToken,
   validator.body(channeldetailsSchema),

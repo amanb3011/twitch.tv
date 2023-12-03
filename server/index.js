@@ -20,7 +20,7 @@ app.use(cors());
 app.get("/", (req, res) => res.send("API IS RUNNING"));
 
 app.use("/api/auth", authRoutes);
-app.use("/api/channel", channelRoutes);
+app.use("/api/channels", channelRoutes);
 app.use("/api/settings", settingsRoutes);
 
 app.listen(PORT, () => console.log(`server is running on port ${PORT}`));

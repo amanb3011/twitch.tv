@@ -8,8 +8,6 @@ export const getChannelSettings = async (req, res) => {
       username: 1,
     }).populate("channel");
 
-    console.log(userData);
-
     return res.status(200).json({
       id: userData.channel._id,
       username: userData.username,
