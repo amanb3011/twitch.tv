@@ -1,1 +1,1 @@
-export { Content } from "./Content.js";
+export { Content } from "./Content";

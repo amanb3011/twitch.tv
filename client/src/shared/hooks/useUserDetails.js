@@ -6,6 +6,7 @@ const getUserDetails = () => {
   if (userDetails) {
     return JSON.parse(userDetails);
   }
+
   return null;
 };
 

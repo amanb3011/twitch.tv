@@ -1,1 +1,1 @@
-export { ChannelView } from "./ChannelView.js";
+export { ChannelView } from "./ChannelView";

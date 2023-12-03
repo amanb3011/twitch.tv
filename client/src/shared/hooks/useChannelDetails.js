@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { getChannelDetails as getChannelDetailsRequest } from "../../api";
 import { toast } from "react-hot-toast";
+import { getChannelDetails as getChannelDetailsRequest } from "../../api";
 
 export const useChannelDetails = () => {
   const [channelDetails, setChannelDetails] = useState(null);
@@ -11,7 +11,7 @@ export const useChannelDetails = () => {
     if (responseData.error) {
       return toast.error(
         responseData.exception?.response?.data ||
-          "error occured while fetching the channel details"
+          "Error occurred when fetching channel details"
       );
     }
 
@@ -20,7 +20,7 @@ export const useChannelDetails = () => {
 
   return {
     channelDetails,
-    isFetching: !Boolean(channelDetails),
+    isFetching: !channelDetails,
     getChannelDetails,
   };
 };

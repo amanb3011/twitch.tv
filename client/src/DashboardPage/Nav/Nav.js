@@ -6,13 +6,7 @@ import { useUserDetails } from "../../shared/hooks";
 const NavLogo = () => {
   return (
     <div className="nav-logo-container">
-      <img
-        className="nav-logo"
-        width="100%"
-        height="100%"
-        src={logo}
-        alt="logo"
-      />
+      <img className="nav-logo" width="100%" height="100%" src={logo} />
     </div>
   );
 };
@@ -42,6 +36,10 @@ export const Nav = () => {
     navigate("/channels");
   };
 
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <div className="nav-container">
       <NavLogo />
@@ -55,7 +53,7 @@ export const Nav = () => {
               text="My Account"
               onClickHandler={handleNavigateToSettings}
             />
-            <NavButton text="Logout" onClickHandler={logout} />
+            <NavButton text="Logout" onClickHandler={handleLogout} />
           </div>
         )}
       </div>

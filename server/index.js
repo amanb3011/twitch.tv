@@ -1,26 +1,41 @@
 import express from "express";
+import http from "http";
 import cors from "cors";
 import dotenv from "dotenv";
-dotenv.config();
+import mongoose from "mongoose";
+
 import authRoutes from "./src/routes/authRoutes.js";
-import connectDB from "./src/config/db.js";
-import channelRoutes from "./src/routes/channelRoutes.js";
+import channelsRoutes from "./src/routes/channelsRoutes.js";
 import settingsRoutes from "./src/routes/settingsRoutes.js";
+
+dotenv.config();
 
 const PORT = process.env.PORT || process.env.API_PORT;
 
-connectDB();
-
 const app = express();
 
-app.use(express.json()); //body parser
+app.use(express.json());
 
 app.use(cors());
 
-app.get("/", (req, res) => res.send("API IS RUNNING"));
+app.get("/", (req, res) => {
+  return res.send("Hello here is your server");
+});
 
 app.use("/api/auth", authRoutes);
-app.use("/api/channels", channelRoutes);
+app.use("/api/channels", channelsRoutes);
 app.use("/api/settings", settingsRoutes);
 
-app.listen(PORT, () => console.log(`server is running on port ${PORT}`));
+const server = http.createServer(app);
+
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    server.listen(PORT, () => {
+      console.log(`Server is listening on ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.log("Database connection failed. Server not started");
+    console.log(err);
+  });

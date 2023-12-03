@@ -2,9 +2,9 @@ import User from "../../models/User.js";
 
 export const postFollowChannel = async (req, res) => {
   try {
-    const { channelId } = req.body;
-
     const { userId } = req.user;
+
+    const { channelId } = req.body;
 
     const userData = await User.findById(userId, { followedChannels: 1 });
 
@@ -15,8 +15,10 @@ export const postFollowChannel = async (req, res) => {
     userData.followedChannels.push(channelId);
 
     await userData.save();
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send("something went wrong.please try again");
+
+    return res.status(200).send("Channel followed successfully");
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send("Something went wrong. Please try again");
   }
 };

@@ -8,7 +8,7 @@ import { LoadingSpinner } from "../shared/components";
 import "./dashboardPage.css";
 
 export const DashboardPage = () => {
-  const { getChannels, isFetching, allChannels, followedChannels } =
+  const { getChannels, isFetching, followedChannels, allChannels } =
     useChannels();
   const { isLogged } = useUserDetails();
 

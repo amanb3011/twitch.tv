@@ -8,7 +8,7 @@ export const getChannelDetails = async (req, res) => {
     const channel = await Channel.findById(channelId);
 
     if (!channel || !channel.isActive) {
-      return res.status(404).send("channel not found");
+      return res.status(404).send("Channel not found");
     }
 
     const user = await User.findOne({ channel: channelId }, { username: 1 });
@@ -25,10 +25,10 @@ export const getChannelDetails = async (req, res) => {
       isOnline,
       streamUrl: streamUrl,
     });
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send("something went wrong check your url");
+  } catch (err) {
+    console.log(err);
+    return res
+      .status(500)
+      .send("Channel not found. Please check you channel url");
   }
 };
-
-export default getChannelDetails;

@@ -1,5 +1,23 @@
 import React from "react";
 
+const followedChannels = [
+  {
+    id: 1,
+    username: "Martin",
+    isOnline: false,
+  },
+  {
+    id: 2,
+    username: "Marta",
+    isOnline: true,
+  },
+  {
+    id: 3,
+    username: "Jack",
+    isOnline: false,
+  },
+];
+
 export const Sidebar = ({ channels }) => {
   if (!channels) {
     return null;

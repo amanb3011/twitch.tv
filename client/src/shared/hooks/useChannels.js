@@ -1,9 +1,9 @@
-import { useState } from "react";
-import {
-  getChannels as getChannelsRequest,
-  getFollowedChannels,
-} from "../../api";
+import { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
+import {
+  getFollowedChannels,
+  getChannels as getChannelsRequest,
+} from "../../api";
 
 export const useChannels = () => {
   const [channels, setChannels] = useState(null);
@@ -14,7 +14,7 @@ export const useChannels = () => {
     if (channelsData.error) {
       return toast.error(
         channelsData.exception?.response?.data ||
-          "error occured while fetching the channels"
+          "Error occurred when fetching the channels"
       );
     }
 
@@ -29,7 +29,7 @@ export const useChannels = () => {
     if (followedChannelsData.error) {
       return toast.error(
         followedChannelsData.exception?.response?.data ||
-          "error occured while fetching the followed channels"
+          "Error occurred when fetching the followed channels"
       );
     }
 
@@ -48,5 +48,3 @@ export const useChannels = () => {
     followedChannels: channels?.followedChannels,
   };
 };
-
-export default useChannels;

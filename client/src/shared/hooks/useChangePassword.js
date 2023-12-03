@@ -1,5 +1,6 @@
-import { changePassword as changePasswordRequest } from "../../api";
 import { toast } from "react-hot-toast";
+import { changePassword as changePasswordRequest } from "../../api";
+
 export const useChangePassword = () => {
   const changePassword = async (password, newPassword) => {
     const responseData = await changePasswordRequest({
@@ -10,11 +11,11 @@ export const useChangePassword = () => {
     if (responseData.error) {
       return toast.error(
         responseData.exception?.response?.data ||
-          "Error occured while trying to change password.Please try again"
+          "Error occurred while trying to change password. Please try again"
       );
     }
 
-    toast.success("password changed successfully");
+    toast.success("Password changed successfully");
   };
 
   return {

@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 
-const messageSchema = new mongoose.Schema({
+const { Schema } = mongoose;
+
+const messageSchema = new Schema({
   author: { type: String },
   content: { type: String },
   date: { type: Date },

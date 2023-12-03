@@ -1,7 +1,8 @@
 import axios from "axios";
+import { logout } from "../shared/utils";
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:9000/api",
+  baseURL: "http://localhost:5002/api",
   timeout: 1000,
 });
 
@@ -80,6 +81,7 @@ export const getFollowedChannels = async () => {
   try {
     return await apiClient.get("/channels/followed");
   } catch (exception) {
+    checkResponseStatus(exception);
     return {
       error: true,
       exception: exception,
@@ -98,13 +100,13 @@ export const getChannels = async () => {
   }
 };
 
-export const getChannelDetails = async (id) => {
+export const getChannelDetails = async (channelId) => {
   try {
-    return await apiClient.get(`/channels/${id}`);
+    return await apiClient.get(`/channels/${channelId}`);
   } catch (exception) {
     return {
       error: true,
-      exception: exception,
+      exception,
     };
   }
 };
@@ -119,5 +121,13 @@ export const followChannel = async (channelId) => {
       error: true,
       exception,
     };
+  }
+};
+
+const checkResponseStatus = (exception) => {
+  const responseStatus = exception?.response?.status;
+
+  if (responseStatus) {
+    (responseStatus === 401 || responseStatus === 403) && logout();
   }
 };

@@ -1,12 +1,12 @@
 import express from "express";
+import ExpressValidation from "express-joi-validation";
 import Joi from "joi";
+import { verifyToken } from "../middlewares/auth.js";
 import {
   getChannelSettings,
   putChannelSettings,
   patchChangePassword,
 } from "../controllers/controllers.js";
-import ExpressValidation from "express-joi-validation";
-import { verifyToken } from "../middlewares/auth.js";
 
 const router = express.Router();
 

@@ -11,7 +11,7 @@ export const getChannels = async (_, res) => {
     ).populate("channel");
 
     const channels = users
-      .filter((user) => user.channel.isActive)
+      .filter((u) => u.channel.isActive)
       .map((user) => {
         return {
           id: user.channel._id,
@@ -25,10 +25,8 @@ export const getChannels = async (_, res) => {
     return res.json({
       channels,
     });
-  } catch (error) {
-    console.log(error);
-    return res.status(500).message("something went wrong");
+  } catch (err) {
+    console.log(err);
+    return res.status(500).message("Something went wrong");
   }
 };
-
-export default getChannels;

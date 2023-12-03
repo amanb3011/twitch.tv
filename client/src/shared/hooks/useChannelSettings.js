@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { getChannelSettings, updateChannelSettings } from "../../api";
 import { toast } from "react-hot-toast";
+import { getChannelSettings, updateChannelSettings } from "../../api";
 
 export const useChannelSettings = () => {
   const [channelSettings, setChannelSettings] = useState(null);
@@ -11,7 +11,7 @@ export const useChannelSettings = () => {
     if (response.error) {
       return toast.error(
         response.exception?.response?.data ||
-          "Error occurred while fetching channel settings"
+          "Error occurred when fetching channel settings"
       );
     }
 
@@ -30,12 +30,13 @@ export const useChannelSettings = () => {
     if (response.error) {
       return toast.error(
         response.exception?.response?.data ||
-          "Error occurred while saving channel settings"
+          "Error occurred when saving channel details"
       );
     }
 
-    toast.success("channel settings saved successfully");
+    toast.success("Channel settings saved successfully");
   };
+
   useEffect(() => {
     fetchChannelSettings();
   }, []);

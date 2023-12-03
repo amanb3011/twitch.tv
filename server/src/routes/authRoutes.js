@@ -1,11 +1,11 @@
 import express from "express";
-import { postLogin, postRegister } from "../controllers/controllers.js";
 import Joi from "joi";
 import ExpressValidation from "express-joi-validation";
+import { postLogin, postRegister } from "../controllers/controllers.js";
 
 const router = express.Router();
 
-const validator = ExpressValidation.createValidator();
+const validator = ExpressValidation.createValidator({});
 
 const registerSchema = Joi.object({
   username: Joi.string().min(3).max(12).required(),

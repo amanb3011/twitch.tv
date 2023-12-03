@@ -6,7 +6,7 @@ export const verifyToken = (req, res, next) => {
   let token = req.body.token || req.query.token || req.headers["authorization"];
 
   if (!token) {
-    res.status(401).send("a token is required for authentication");
+    return res.status(401).send("A token is required for authentication");
   }
 
   try {
@@ -14,8 +14,8 @@ export const verifyToken = (req, res, next) => {
     const decoded = jwt.verify(token, config.TOKEN_KEY);
 
     req.user = decoded;
-  } catch (error) {
-    return res.status(401).send("invalid token");
+  } catch (err) {
+    return res.status(401).send("Invalid Token");
   }
 
   return next();

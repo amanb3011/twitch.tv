@@ -1,10 +1,12 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 import { v4 as uuid } from "uuid";
 
-const defaultTitle = "new channel";
-const defaultDescription = "this is new channel description";
+const { Schema } = mongoose;
 
-const channelSchema = new mongoose.Schema({
+const defaultTitle = "New Channel";
+const defaultDescription = "This is new channel description";
+
+const channelSchema = new Schema({
   isActive: { type: Boolean, default: false },
   title: { type: String, default: defaultTitle },
   description: { type: String, default: defaultDescription },
@@ -16,6 +18,4 @@ const channelSchema = new mongoose.Schema({
   },
 });
 
-const Channel = mongoose.model("Channel", channelSchema);
-
-export default Channel;
+export default mongoose.model("Channel", channelSchema);

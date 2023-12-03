@@ -13,6 +13,10 @@ export const putChannelSettings = async (req, res) => {
       await User.updateOne({ _id: userId }, { username });
     }
 
+    console.log(userData);
+
+    console.log(userData.channel);
+
     const channelData = await Channel.findByIdAndUpdate(
       userData.channel,
       {
@@ -25,16 +29,14 @@ export const putChannelSettings = async (req, res) => {
     );
 
     return res.status(200).json({
-      channelId: channelData._id,
+      channeId: channelData._id,
       username,
       title: channelData.title,
       description: channelData.description,
       avatarUrl: channelData.avatarUrl,
     });
-  } catch (error) {
-    console.log(error);
-    return res.status(500).send("something went wrong");
+  } catch (e) {
+    console.log(e);
+    return res.status(500).send("Something went wrong");
   }
 };
-
-export default putChannelSettings;

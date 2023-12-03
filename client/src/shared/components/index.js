@@ -1,2 +1,2 @@
-export { Input } from "./input.js";
-export { LoadingSpinner } from "./LoadingSpinner.js";
+export { Input } from "./Input";
+export { LoadingSpinner } from "./LoadingSpinner";

@@ -5,8 +5,11 @@ export const getChannelSettings = async (req, res) => {
     const { userId } = req.user;
 
     const userData = await User.findById(userId, {
+      channel: 1,
       username: 1,
     }).populate("channel");
+
+    console.log(userData);
 
     return res.status(200).json({
       id: userData.channel._id,
@@ -18,6 +21,6 @@ export const getChannelSettings = async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status(500).send("something went wrong");
+    return res.status(500).send("Something went wrong");
   }
 };
