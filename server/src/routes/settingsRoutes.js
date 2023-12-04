@@ -13,7 +13,7 @@ const router = express.Router();
 const validator = ExpressValidation.createValidator({});
 
 const channelSettingsSchema = Joi.object({
-  username: Joi.string().min(3).max(12).required(),
+  username: Joi.string().min(3).max(15).required(),
   description: Joi.string().min(10).max(200).required(),
   title: Joi.string().min(3).max(30).required(),
   avatarUrl: Joi.string().uri().required(),
