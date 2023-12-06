@@ -70,7 +70,7 @@ export const Login = ({ switchAuthHandler }) => {
 
   return (
     <div className="login-container">
-      <Logo text={"Log in to Clone"} />
+      <Logo text={"Log in"} />
       <form className="auth-form">
         <Input
           field="email"

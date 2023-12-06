@@ -98,7 +98,7 @@ export const Register = ({ switchAuthHandler }) => {
 
   return (
     <div className="register-container">
-      <Logo text={"Sign up to Clone"} />
+      <Logo text={"Sign up"} />
       <form className="auth-form">
         <Input
           field="email"
